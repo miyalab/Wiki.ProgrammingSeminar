@@ -6,12 +6,17 @@ include_directories(/usr/local/include)
 link_directories(/usr/local/lib)
 
 # ビルドに関する設定
-set(EXECUTABLE 
+set(EXECUTABLES
     imread
+    imwrite
+    imshow
 )
 set(DEPENDENT_LIBS 
-    opencv_core;
-    opencv_highgui;
-    opencv_imgcodecs)
-add_executable(${EXECUTABLE} src/${EXECUTABLE}.cpp)
-target_link_libraries(${EXECUTABLE} ${DEPENDENT_LIBS})
+    opencv_core
+    opencv_highgui
+    opencv_imgcodecs
+)
+foreach(target IN LISTS EXECUTABLES)
+  add_executable(${target} src/${target}.cpp)
+  target_link_libraries(${target} ${DEPENDENT_LIBS})
+endforeach()
