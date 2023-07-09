@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+OpenCV(C++)/01/build/*
+!OpenCV(C++)/01/build/.gitkeep
